@@ -48,7 +48,7 @@ const MAIL_DATA = [
 ]
 
 function checkSignIn (req, res, next) {
-  if (req.session.username === 'admin') {
+  if (req.session.fullName) {
     next()
   } else res.redirect('/login')
 }
@@ -65,7 +65,9 @@ app.get('/unreads', checkSignIn, function (req, res) {
 })
 
 app.get('/login', function (req, res) {
-  res.render('login', { layout: 'default' })
+  if (req.session.fullName) { res.redirect('/unreads') } else {
+    res.render('login', { layout: 'default' })
+  }
 })
 
 app.get('/reset', function (req, res) {
@@ -92,6 +94,13 @@ app.post('/login', function (req, res) {
   }
 })
 
+app.post('/logout', (req, res) => {
+  if (req.session.fullName) {
+    req.session.destroy()
+  }
+  res.redirect('/login')
+})
+
 app.get('/trash', checkSignIn, (req, res) => {
   const unreads = MAIL_DATA.filter(mail => (mail.isDeleted === false))
   res.render('unreads', {
@@ -113,6 +122,7 @@ app.post('/deleteMail', function (req, res) {
   }
   res.redirect('/unreads')
 })
-
-app.use(checkSignIn)
+app.use((req, res) => {
+  res.redirect('/login')
+})
 app.listen(3000, () => console.log('Listening to port 3000...'))

@@ -17,11 +17,8 @@ const fakeAccounts = [
   }
 ]
 context('Email Test', () => {
-  beforeEach(() => {
-    cy.visit('http://localhost:3000')
-  })
-
   it('test login module', () => {
+    cy.visit('http://localhost:3000/login')
     // test ui
     cy.url().should('eq', 'http://localhost:3000/login')
     cy.get('.login-class').should('be.visible')
@@ -53,7 +50,8 @@ context('Email Test', () => {
   })
 
   it('test mail box module', () => {
-    // test url if login with a correct account
+    cy.visit('http://localhost:3000/login')
+    // test url if login with a co else res.redirect('/login')rrect account
     const CORRECT_USN = 'admin'
     const CORRECT_PWD = '123'
     let mailToDeleteName
@@ -100,6 +98,22 @@ context('Email Test', () => {
       cy.url().should('eq', 'http://localhost:3000/trash')
       cy.wait(100)
       cy.get(`div.mail[name=${mailToDeleteName}]`).should('be.visible')
+    })
+  })
+
+  it('test interactive between deletemail module and login module', () => {
+    // click to login button and it should redirect to login module
+    cy.get('button[name="logout"]').click().then(() => {
+      cy.url().should('eq', 'http://localhost:3000/login')
+    })
+    // check if i can navigate to unreads or deleteds
+    cy.visit('http://localhost:3000/unreads').then(() => {
+      cy.wait(1000)
+      cy.url().should('eq', 'http://localhost:3000/login')
+    })
+    cy.visit('http://localhost:3000/trash').then(() => {
+      cy.wait(1000)
+      cy.url().should('eq', 'http://localhost:3000/login')
     })
   })
 })

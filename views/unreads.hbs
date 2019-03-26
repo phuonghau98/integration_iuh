@@ -1,0 +1,24 @@
+<div class='mailbox-wrapper'>
+  <div class='hi'>Hello, {{fullName}}</div>
+  <div class='dash'>
+    <div class='col-1'>
+      <ul>
+        <span><a href='/unreads'><li name='unreads'>Unread mails (<span name='unreadsCount'>{{unreadsCount}}</span>)</li></a></span>
+        <span><a href='/trash'><li name='deleted'>Trash (<span name='deletedCount'>{{deletedCount}}</span>)</li></a></span>
+      </ul>
+    </div>
+    <div class='col-2'>
+      {{#each mailData}}
+        <div class='mail' name='{{_id}}'>
+          <h3>Title: {{title}}</h3>
+          <p style='font-weight: 800'>From: {{from}}</p>
+          <h3>Content:</h3>
+          <p>{{content}}</p>
+          <form action='deleteMail' method='post'>
+            <button type='submit' name='deleteMail' value='{{_id}}'>Delete</button>
+          </form>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,90 @@
+html, body {
+  height: 100%;
+  margin: 0px;
+}
+.login-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+input {
+  margin: 10px 0px;
+}
+.error{
+  color: red;
+}
+.login-class {
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.login-btn {
+  padding: 10px;
+  color: blue;
+  border-radius: 10px;
+  outline: 0px;
+}
+
+.default {
+  height: 100%;
+}
+
+.hi {
+  height: 10%;
+  text-align: center;
+  padding: 30px;
+  box-sizing: border-box;
+  font-size: 2em;
+}
+
+.dash {
+  height: 90%;
+}
+.mailbox-wrapper{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  border: 1px solid black;
+  margin: 10px;
+}
+a {
+  font-size: 1.2em;
+  text-decoration: none;
+}
+
+a:visited {
+  color: black;
+}
+
+.dash{
+  display: flex;
+}
+.dash .col-1{
+  width: 15%;
+  border-right: 1px solid black;
+}
+.dash .col-2{
+  width: 85%;
+  display: flex;
+  padding: 0 20px;
+  box-sizing: border-box;
+  flex-direction: column;
+}
+.mail{
+  padding: 15px;
+  border: 1px solid black;
+  border-radius: 4px;
+  margin: 10px 0;
+}

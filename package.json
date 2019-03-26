@@ -1,0 +1,20 @@
+{
+  "name": "integration_iuh",
+  "version": "1.0.0",
+  "description": "An awesome email system",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "PhuongHau@innos",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.4",
+    "cypress": "^3.2.0",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.2",
+    "express-session": "^1.15.6",
+    "handlebars": "^4.1.1"
+  }
+}
